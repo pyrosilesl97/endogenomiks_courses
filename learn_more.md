@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Software
-permalink: /software/
+title: Learn more
+permalink: /learn_more/
 ---
 
 {% include image.html url="/_images/81YPoJkJafS.jpg" width=175 align="right" %}

@@ -8,6 +8,10 @@ items:
   name: Topics
   icon_class: fas fa-book-reader
 
-- url: /softwares/
+- url: /software/
   name: Software
+  icon_class: fas fa-book-reader
+
+- url: /learn_more/
+  name: Learn_more
   icon_class: fas fa-book-reader
