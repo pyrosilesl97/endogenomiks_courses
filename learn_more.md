@@ -11,7 +11,7 @@ permalink: /learn_more/
 
 ## Books
 
-If you want to learn more about genomic data analysis, we strongly recommend this books: 
+If you want to learn more about genomic data analysis, we strongly recommend these books: 
 
 [R for data science](https://r4ds.had.co.nz)
 [Python for Bioinformatics](https://drive.google.com/file/d/1xvqCNOT3WBaBI-5jIPcv8_Cr9TDhytJ4/view?usp=share_link)
