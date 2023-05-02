@@ -1,22 +1,21 @@
 # Site settings
-course_name: History of Magic
-course_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare aliquam mattis. Donec hendrerit sollicitudin urna. Aliquam venenatis rutrum velit, at lobortis dui cursus a. Nam varius metus in turpis maximus, ut rhoncus tellus dictum. In aliquam tortor nec mi dapibus, sit amet vehicula dolor auctor."
-course_semester: "Fall 1998"
+course_name: Endogenomiks courses
+course_description: "This is a repository for courses and tools used by Endogenomiks in data analysis. This course is descriptive and is not limited to the tools used in Endogenomiks."
+course_semester: "May 2023"
 
-baseurl: "/jekyll-course-website-template" # the subpath of your site, e.g. /blog/
-url: "http://kazemnejad.github.io/" # the base hostname & protocol for your site
+baseurl: "/endogenomiks_courses" # the subpath of your site, e.g. /blog/
+url: "http://pyrosilesl97.github.io/" # the base hostname & protocol for your site
 
-schoolname: "Hogwarts"
-schoolurl: "https://hogwarts.edu"
-twitter_username: username 
+schoolname: "Endogenomiks"
+schoolurl: "https://www.endogenomiks.com"
+twitter_username: endogenomiks 
 
 address: |
-    School of Witchcraft and Wizardry
-    Hogwarts
-    Scotland
+    Avenida Camino Real de Guanajuato S/N
+    Ejido de Lo De Juarez
+    AGROBIOTEG, Irapuato, Mexico
 
-# Set your Google Analytics tracking ID (set up yours at http://www.google.com/analytics/)
-# google_analytics: UA-XXXXXXXX-X
+
 
 ### Do not change the followings unless you know what you are doing ###
 
