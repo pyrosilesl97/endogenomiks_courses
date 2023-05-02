@@ -8,7 +8,6 @@ items:
   name: Lectures
   icon_class: fas fa-book-reader
 
-
-- url: /sofware/
+- url: /software/
   name: Software
   icon_class: fas fa-book
