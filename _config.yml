@@ -37,15 +37,15 @@ collections:
         output: true
     lectures:
         output: true
-#    assignments:
-#        output: true
+    assignments:
+        output: true
     announcements:
         output: false
 
 
-#defaults:
-#  - scope:
-#      path: ""
-#      type: "assignments"
-#    values:
-#      layout: "assignment"
+defaults:
+  - scope:
+      path: ""
+      type: "assignments"
+    values:
+      layout: "assignment"
