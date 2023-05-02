@@ -1,19 +1,18 @@
-instructors:
-  - name: Albus Dumbledore
-    profile_pic: /_images/pp/dumbledore.jpg
-    webpage: https://en.wikipedia.org/wiki/Albus_Dumbledore
-  - name: Minerva McGonagall
-    profile_pic: /_images/pp/mcgonagall.jpg
+Koppert_Team:
+  - name: Angélica Cibrián Jaramillo
+    profile_pic: /_images/pp/cibrian.jpg
+    webpage: https://www.linkedin.com/in/angelica-cibrian-jaramillo-6697963a/
+  - name: Irene de brujin
+    profile_pic: /_images/pp/irene.jpg
+    webpage: https://www.linkedin.com/in/irene-de-bruijn-aa161413/
+  - name: Francisco Barona Gómez
+    profile_pic: /_images/pp/barona.jpg
+    webpage: https://twitter.com/EvoDivMet
 
-teaching_assistants:
-  - name: Harry Potter
-    profile_pic: /_images/pp/potter.jpg
-    webpage: https://en.wikipedia.org/wiki/Harry_Potter_(character)
+Endogenomiks_Scientific_Team:
+  - name: Adrien Launay
+    profile_pic: /_images/pp/adrien.jpg
 
-  - name: Hermione Granger
-    profile_pic: /_images/pp/granger.jpg
-    webpage: https://en.wikipedia.org/wiki/Hermione_Granger
-
-  - name: Ron Weasley
-    profile_pic: /_images/pp/weasley.jpg
-    webpage: https://en.wikipedia.org/wiki/Ron_Weasley
+  - name: Pablo Yamild Rosiles Loeza
+    profile_pic: /_images/pp/pablo.jpg
+    webpage: https://pyrosilesl97.github.io

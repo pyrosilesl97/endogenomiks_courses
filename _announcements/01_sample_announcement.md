@@ -1,4 +1,4 @@
 ---
-date: 2018-10-03T10:00:00+3:30
+date: 2023-05-03T10:00:00+3:30
 ---
-Sample announcement, Please check out [here](/).
+Modification of an announcement

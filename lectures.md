@@ -1,6 +1,6 @@
 ---
 layout: lectures
-title: Lectures
+title: Topics
 permalink: /lectures/
 ---
 You can download the class material here. 
