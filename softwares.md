@@ -1,6 +1,6 @@
 ---
 layout: page
-title: software
+title: Software
 permalink: /software/
 ---
 
@@ -9,7 +9,7 @@ permalink: /software/
 
 
 
-## Book
+## Books
 
 If you want to learn more about genomic data analysis, we strongly recommend this books: 
 

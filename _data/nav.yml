@@ -5,9 +5,9 @@ items:
 
 
 - url: /lectures/
-  name: Lectures
+  name: Topics
   icon_class: fas fa-book-reader
 
-- url: /software/
+- url: /softwares/
   name: Software
   icon_class: fas fa-book-reader
