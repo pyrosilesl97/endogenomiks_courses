@@ -1,20 +1,18 @@
 ---
 layout: page
-title: Materials
-permalink: /materials/
+title: Software required
+permalink: /software/
 ---
 
-{% include image.html url="/_images/cover2.jpg" width=175 align="right" %}
+{% include image.html url="/_images/81YPoJkJafS.jpg" width=175 align="right" %}
+{% include image.html url="/_images/91BsmyFU9PL.jpg" width=175 align="right" %}
+
+
 
 ## Book
 
-Alan Turing and Noam Chomsky: Very Famous Book
+If you want to learn more about genomic data analysis, we strongly recommend this books: 
 
-## Additional Course Materials
+[R for data science](https://r4ds.had.co.nz)
+[Python for Bioinformatics]()
 
-* If you are not familiar with Python programming, use any online tutorial to get a handle of it.
-* [Material #1](http://www.example.com/): how a computer chess player thinks!
-* [Material #2](http://www.example.com/): how a computer chess player thinks!
-* [Material #3](http://www.example.com/): how a computer chess player thinks!
-* [Material #4](http://www.example.com/): how a computer chess player thinks!
-* [Material #5](http://www.example.com/): how a computer chess player thinks!
