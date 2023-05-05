@@ -11,6 +11,6 @@ links:
       name: slides
 ---
 **Suggested Readings:**
-- [R for data science](https://drive.google.com/file/d/1b7SVs8177aMz9rzNXZYwfjKuehRnqjAT/view?usp=share_link)
-- [Classic Shell Scripting](https://drive.google.com/file/d/19nhGGdtAgcXXHiNzof1BK-JNm0EgdZD5/view?usp=share_link)
-- [R programming for Bioinformatics](https://drive.google.com/file/d/1provNIGExZRrTOV2m9My61MlJiiiJMJh/view?usp=share_link)
+- [R for data science](https://r4ds.had.co.nz)
+- [Classic Shell Scripting](https://www.oreilly.com/library/view/classic-shell-scripting/0596005954/)
+- [R programming for Bioinformatics](https://www.routledge.com/R-Programming-for-Bioinformatics/Gentleman/p/book/9781420063677)

@@ -7,8 +7,8 @@ thumbnail: /static_files/presentations/national-cancer-institute-zQkoVCTyaHI-uns
 links: 
     - url: /static_files/presentations/rnaseq.zip
       name: codes
-    - url: https://docs.google.com/presentation/d/1rwGbqZdFCL-AKETtQB_YkciCZeGW8k12ck_FqnNPyrA/edit?usp=share_link
+    - url: https://docs.google.com/presentation/d/1V59U654UzwOFovXO40JFi3UKNGil6kKFHN3JZas32yA/edit?usp=sharing
       name: slides
 ---
 **Suggested Readings:**
-- [Transcriptome Data Analysis: Methods and Protocols ](https://drive.google.com/file/d/1TgU2yDmu99PpWI9m-29wi9OzVEtq0Ksc/view?usp=share_link)
+- [Transcriptome Data Analysis: Methods and Protocols ](https://link.springer.com/book/10.1007/978-1-4939-7710-9)

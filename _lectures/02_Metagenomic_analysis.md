@@ -11,4 +11,4 @@ links:
       name: slides
 ---
 **Suggested Readings:**
-- [Metagenomic System Biology](https://drive.google.com/file/d/1czgSlsiuyuWZh6An7GcSbiLreAvmY8bW/view?usp=share_link)
+- [Metagenomic System Biology](https://link.springer.com/book/10.1007/978-981-15-8562-3)
