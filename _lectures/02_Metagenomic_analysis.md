@@ -2,7 +2,7 @@
 type: lecture
 date: 2023-04-02T8:00:00+4:30
 title: Metagenomic analysis
-tldr: "Metagenomics is a rapidly growing field that involves the study of genetic material from environmental samples such as soil, water, or human microbiome. This course will introduce students to the fundamentals of metagenomic data analysis, including quality control, assembly, annotation, taxonomic classification, and functional analysis."
+tldr: "Metagenomics is a rapidly growing field that involves the study of genetic material from environmental samples such as soil, water, or human microbiome. This course will introduce students to the fundamentals of metagenomic data analysis, including quality control, assembly, annotation and taxonomic classification."
 thumbnail: /static_files/presentations/national-cancer-institute-bwMhq_itmMU-unsplash.jpg
 links: 
     - url: /static_files/codes/Metagenomic_analysis.html
