@@ -13,3 +13,5 @@ conda install -c bioconda fastqc
 conda install -c bioconda multiqc 
 ```
 
+Then we need to install frogs, for this, download the following yaml file in your working directory 
+[frogs-conda-requirements.yaml]()
