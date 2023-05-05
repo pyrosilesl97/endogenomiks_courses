@@ -4,6 +4,10 @@ title: Software
 permalink: /software/
 ---
 
+If you are not familiar with the command line, we recommend that you install [R](https://www.r-project.org) and [Rstudio](https://posit.co/download/rstudio-desktop/) on your computer. This will allow you to easily visualize the results of the analysis. 
+
+
+
 For convenience, all necessary software will be installed using conda. If this is not installed on the system, it must be installed. For this the click on the following link [conda installation](https://docs.conda.io/en/latest/miniconda.html)
 
 After conda is installed, you will run the following commands to install fastQC and multiQC
