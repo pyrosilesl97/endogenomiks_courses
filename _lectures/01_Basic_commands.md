@@ -2,12 +2,12 @@
 type: lecture
 date: 2023-04-02T8:00:00+4:30
 title: Basic commands in terminal
-tldr: "This part includes the necessary basic commands in bash and R."
+tldr: "This part includes the necessary basic commands in bash."
 thumbnail: /static_files/presentations/florian-olivo-4hbJ-eymZ1o-unsplash.jpg
 links: 
-    - url: /static_files/presentations/intro.zip
+    - url: /static_files/codes/Workshop_Koppert.html
       name: codes
-    - url: https://docs.google.com/presentation/d/1bQMY0fDQDm6TKvqFHKkL0V8TILKFhxDswvHDRAeL8Us/edit?usp=share_link
+    - url: https://docs.google.com/presentation/d/1NpjKK3rkWmXfOdAqGZ7lV3c84WMmp9Vc/edit?usp=share_link&ouid=109009324308101921092&rtpof=true&sd=true
       name: slides
 ---
 **Suggested Readings:**
