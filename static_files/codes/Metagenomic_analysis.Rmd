@@ -13,6 +13,7 @@ First a tsv file was created with the metadata of the data in question. This met
 #Reading metadata
 metadata <- read.table("metadata.tsv", row.names = 1, header = TRUE, sep = "\t", stringsAsFactors = TRUE)
 metadata #Print metadata 
+getwd()
 ```
 
 
@@ -22,7 +23,8 @@ To analyze the quality of the samples, the reads are downloaded and processed us
 
 ```{bash, eval=F}
 mkdir FASTQC
-for i in *.fastq.gz ; do echo " fastqc $i -o FASTQC_pre" >> fastqc.sh ; done
+for i in *.fastq.gz ;  " fastqc $i -o FASTQC_pre" >> fastqc.sh ; done
+./fastqc.sh
 
 ```
 
@@ -203,7 +205,7 @@ biomfile <- "tax_asg/filter.biom"
 frogs <- import_frogs(biomfile, taxMethod = "blast")
 metadata <- read.table("metadata.tsv", row.names = 1, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
 sample_data(frogs) <- metadata
-
+row.names(metadata) <-  metadata$Serial.Name
 samples <- rownames(sample_data(frogs))
 final <- sample_sums(frogs)
 initial <- metadata$Reads
@@ -221,8 +223,13 @@ Subsequently we can use the results of the affiliation to obtain the abundances 
 ```{r message=FALSE, warning=FALSE}
 phy_obj0 = subset_taxa(frogs, Genus != "Multi-affiliation")
 phy_obj0 = subset_taxa(phy_obj0, Genus != "unknown genus")
-plot_bar(phy_obj0, fill="Genus") + facet_wrap(~Batch, scales= "free_x", nrow=1)
+new_sample_names <- c("200,000L_F4","CryoStock SF",  "Cryostock SC"  ,   "Working stock SC", "Working stock SF", "50L_F1"    ,       "50L_F7"     ,      "50L_F2"     ,      "200,000L_F6"    )
 
+sample_names(phy_obj0) <- new_sample_names
+
+plot_bar(phy_obj0, fill = "Genus") +
+  facet_wrap(~Yield, scales = "free_x", nrow = 1) +
+  theme(text = element_text(size = 20))
 ```
 
 A representation by proportion of reads 

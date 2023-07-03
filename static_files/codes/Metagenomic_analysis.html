@@ -382,7 +382,8 @@ in the terminal. The results are located in the FASTQC_pre folder, with
 its corresponding name. The following code was used for this
 purpose.</p>
 <pre class="bash"><code>mkdir FASTQC
-for i in *.fastq.gz ; do echo &quot; fastqc $i -o FASTQC_pre&quot; &gt;&gt; fastqc.sh ; done
+for i in *.fastq.gz ;  &quot; fastqc $i -o FASTQC_pre&quot; &gt;&gt; fastqc.sh ; done
+./fastqc.sh
 </code></pre>
 <p>Finally, multiQC was used to gather the quality results in a single
 file. These can be consulted in the html file of the MULTIQC folder. The

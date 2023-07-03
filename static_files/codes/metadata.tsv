@@ -1,10 +1,10 @@
-Sample	Replicate	Run	Batch	Amplicon	DNA_conc	Reads	Name
-Sample_1_paired	1	1	MS	16S	37.5	153356	Sf_MS_1
-Sample_2_paired	1	1	MS	16S	8.8	150041	Sf_MS_B.1.2.42
-Sample_3_paired	1	1	WS	16S	137.8	137761	Sf_WS_CR4_1
-Sample_4_paired	1	1	WS	16S	51.7	139810	Sf_WS_CR1_1
-Sample_5_paired	1	1	Good	16S	35.5	150693	F_1
-Sample_6_paired	1	1	Good	16S	24.9	155829	F_7
-Sample_8_paired	1	1	Bad	16S	40.3	143828	F_2
-Sample_9_paired	1	1	Bad	16S	58.2	125697	F_6
-Sample_10_paired	1	1	Bad	16S	23.3	150599	F_4
+Sample	Replicate	Run	Batch	Amplicon	DNA_conc	Reads	Serial Name	Yield
+Sample_1_paired	1	1	CryoStock	16S	37.5	153356	Sf_MS_1	CryoStock SF	Good
+Sample_2_paired	1	1	CryoStock	16S	8.8	150041	Sf_MS_B.1.2.42	Cryostock SC	Good
+Sample_3_paired	1	1	Working stock	16S	137.8	137761	Sf_WS_CR4_1	Working stock SC	Good
+Sample_4_paired	1	1	Working stock	16S	51.7	139810	Sf_WS_CR1_1	Working stock SF	Good
+Sample_5_paired	1	1	Bioreactor	16S	35.5	150693	F_1	50L_F1	Good
+Sample_6_paired	1	1	Bioreactor	16S	24.9	155829	F_7	50L_F7	Good
+Sample_8_paired	1	1	Bioreactor	16S	40.3	143828	F_2	50L_F2	Bad
+Sample_9_paired	1	1	Bioreactor	16S	58.2	125697	F_6	200,000L_F6	Bad
+Sample_10_paired	1	1	Bioreactor	16S	23.3	150599	F_4	200,000L_F4	Bad
