@@ -404,7 +404,10 @@ can run Kraken2 on the data. To do this, we use the following code:</p>
 <p>Remember to replace the values preceded by $ with the actual values
 of your files on the computer you are using. Once the process is
 finished, you can use the following code to visualize the results.</p>
-<pre class="bash"><code>more $SAMPLE_OUT_REPORT</code></pre>
+<pre class="bash"><code>more $SAMPLE_OUT_REPORT
+#To explore the report 
+grep &quot;\sK\s&quot; $SAMPLE_OUT_REPORT
+wc $SAMPLE_OUT_REPORT</code></pre>
 <p>Now that we have the results, we can discuss, why do you think we
 cannot identify many sequences? Are there observable and clear
 differences between the different samples?</p>
@@ -449,6 +452,14 @@ separate DNA sequences and you will need to change the header for each
 one. You can check how many there are by searching for “&gt;” in the
 fasta file or by using grep and wc in the terminal.</p>
 <pre class="bash"><code>grep &quot;&gt;&quot; $FASTA_FILE | wc </code></pre>
+<p>The way we do it in the meeting using sed, first looking at the taxid
+in NCBI</p>
+<pre class="bash"><code>#For GCA_900044135.1_GZPH1RResV1_genomic.fna
+sed  &quot;s/ Fusarium graminearum/\|kraken\:taxid\|5518 Fusarium graminearum/&quot; &gt; GCA_900044135.1.fa
+
+#Then we can move the sequences to the correct place 
+mv GCA_900044135.1.fa $CORRECT_PLACE
+</code></pre>
 <p>Once we have changed all the headers, we can put them all in a
 folder, move to it, and we can use the following code to add those
 sequences to our custom database.</p>
