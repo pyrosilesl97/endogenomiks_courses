@@ -2,7 +2,7 @@
 type: lecture
 date: 2023-04-02T8:00:00+4:30
 title: Kraken2 lesson part 1
-tldr: "RNA sequencing (RNAseq) is a powerful tool for studying gene expression and regulation in a wide range of biological systems. This course will provide an introduction to RNAseq data analysis, including data preprocessing, alignment, quantification, differential gene expression analysis, and functional interpretation."
+tldr: "Gain insights into microbial communities and their functional profiles through taxonomic classification, abundance estimation, and functional interpretation."
 thumbnail: /static_files/presentations/kraken.jpeg
 links: 
     - url: /static_files/codes/Kraken2_p1.html
