@@ -1,0 +1,119 @@
+---
+title: "Metagenomic analysis using Kraken part 1"
+author: "Endogenomiks Scientific Team"
+date: "2023-07-04"
+output: html_document
+---
+
+# Building a database and get your files ready
+
+## 1. Downloading database 
+The first thing we have to do is to activate the environment where kraken2 is installed. Normally the name of the environment is kraken2. And it is activated as follows. 
+
+```{bash, eval=F}
+conda activate kraken2
+```
+
+
+If this does not work, what we can do is to check the list of environments using the following command and with this we could know which is the correct name of the environment. 
+
+```{bash, eval=F}
+conda env list 
+
+```
+
+Once the environment is activated, the following command can be used to download the standard database. 
+
+```{bash, eval=F}
+kraken2-build --standard --threads 2 --db standard_db
+
+```
+
+The process of building the database can take some time. Depending on the processor capacity and internet speed. For convenience, you can download a pre-built database using this code:
+
+```{bash, eval=F}
+wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_20200919.tar.gz
+tar -xf k2_standard_20200919.tar.gz
+```
+
+
+
+## 2. Downloading sample files 
+Once our database is ready, we can download our data. For your convenience I downloaded the data we will need and can be found at the following [link](https://drive.google.com/drive/folders/187jeu7GOUgmMV-_LEWm7hqShM_mVXvCX?usp=sharing). These data are from the publication ["Metagenomic sequencing for the detection and identification of the boxwood blight pathogen Calonectria pseudonaviculata"](https://www.nature.com/articles/s41598-022-05381-x), in this paper they used metagenomic sequencing using Oxford Nanopore MinION to detect the fungus Calonectria pseudonaviculata, the causal agent of boxwood blight disease. This study highlights the potential of metagenomic sequencing for routine plant disease diagnostics.
+
+
+# Running kraken2 with standard database
+
+
+Now that we have our database complete and our samples downloaded, we can run Kraken2 on the data.  To do this, we use the following code: 
+```{bash, eval=F}
+kraken2 --db $NAME_OF_DATABASE_OR_PATH_TO_IT $SAMPLE --output $SAMPLE_OUT --threads 2 --report $SAMPLE_OUT_REPORT
+
+```
+
+Remember to replace the values preceded by $ with the actual values of your files on the computer you are using. Once the process is finished, you can use the following code to visualize the results.
+```{bash, eval=F}
+more $SAMPLE_OUT_REPORT
+```
+
+
+Now that we have the results, we can discuss, why do you think we cannot identify many sequences? Are there observable and clear differences between the different samples?
+
+
+# Building a custom kraken2 database
+Due to the results obtained, a customized database will be used. This is necessary because the database we have does not have the organism Calonectria pseudonaviculata. To confirm this, we can inspect our database and then search for that species in the database. To do this, we can use the following code. 
+
+```{bash, eval=F}
+kraken2-inspect --db $NAME_OF_DATABASE_OR_PATH_TO_IT > standard_inspect.txt
+grep "Calonectria" standard_inspect.txt
+```
+
+As we can see, the species we are trying to identify is not found in the database. So we have to build a custom database. To achieve this, in the supplementary material of the publication we have a list of 29 genomes with which they built the database they used for this publication, this is the database we will use. To do so, we download the genomes and for your convenience they are found at the following [link](https://drive.google.com/drive/folders/1kK_e0B3OWrlykVQbrMNqQ1HE58YoqRLx?usp=sharing). 
+
+As you can see, there are two folders with genomes. 27 of the 29 genomes are already processed and ready to be used, but 2 of them need to be processed. In order for kraken to build the database using the genomes you provide, the following conditions must be met: 
+
++ The sequences must be in a FASTA file (multi-FASTA is allowed).
+
++ The ID of each sequence (the string between the > and the first whitespace character in the header line) must contain an NCBI accession number to allow Kraken 2 to search for the correct taxon, or an explicit assignment of the taxonomy ID using kraken:taxid.
+
+You should note that it is rare to find genomes in fasta format that are found as a single large scaffold, so having the accession number is not always possible. So we will need to change the header on the two samples that have not been processed. To do this, we need to look up the accession number in NCBI and its taxonomy ID, then we can change the header so that it looks like the following structure: 
+
+
+```{bash, eval=F}
+>sequence16|kraken:taxid|32630  Adapter sequence
+CAAGCAGAAGACGGCATACGAGATCTTCGAGTGACTGGAGTTCCTTGGCACCCGAGAATTCCA
+```
+
+**Tip**, note that a fasta file can contain multiple separate DNA sequences and you will need to change the header for each one. You can check how many there are by searching for ">" in the fasta file or by using grep and wc in the terminal.
+
+```{bash, eval=F}
+grep ">" $FASTA_FILE | wc 
+```
+
+Once we have changed all the headers, we can put them all in a folder, move to it, and we can use the following code to add those sequences to our custom database. 
+
+```{bash, eval=F}
+for file in *.fa
+do 
+  kraken2-build --add-to-library $file -db custom_database/
+done
+```
+
+
+Once the process is finished, we can build the database using the following code:
+
+```{bash, eval=F}
+kraken2-build --build --db custom_database/ --threads 2
+```
+
+
+# Running kraken2 with a custom kraken2 database
+
+Now that we have our database ready, we can run kraken using this database. Remember to modify the code to put the path to your files. 
+
+```{bash, eval=F}
+kraken2 --db custom_database/ $SAMPLE --output $SAMPLE_OUT --threads 2 --report $SAMPLE_OUT_REPORT
+```
+
+Now that we have both results, we can compare them and discuss the results we have found. 
+
