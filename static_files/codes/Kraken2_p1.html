@@ -457,6 +457,8 @@ in NCBI</p>
 <pre class="bash"><code>#For GCA_900044135.1_GZPH1RResV1_genomic.fna
 sed  &quot;s/ Fusarium graminearum/\|kraken\:taxid\|5518 Fusarium graminearum/&quot; GCA_900044135.1_GZPH1RResV1_genomic.fna &gt; GCA_900044135.1.fa
 
+#To confirm it worked 
+grep &quot;&gt;&quot; GCA_900044135.1.fa
 #Then we can move the sequences to the correct place 
 mv GCA_900044135.1.fa $CORRECT_PLACE
 </code></pre>
@@ -467,8 +469,10 @@ sequences to our custom database.</p>
 do 
   kraken2-build --add-to-library $file -db custom_database/
 done</code></pre>
-<p>Once the process is finished, we can build the database using the
-following code:</p>
+<p>Once the process is finished, we need to download the taxonomy
+file</p>
+<pre class="bash"><code>kraken2-build --download-taxonomy --db custom_database/</code></pre>
+<p>Now we can build the database using the following code:</p>
 <pre class="bash"><code>kraken2-build --build --db custom_database/ --threads 2</code></pre>
 </div>
 <div id="running-kraken2-with-a-custom-kraken2-database" class="section level1">

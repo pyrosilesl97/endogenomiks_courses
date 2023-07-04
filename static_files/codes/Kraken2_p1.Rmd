@@ -99,6 +99,8 @@ The way we do it in the meeting using sed, first looking at the taxid in NCBI
 #For GCA_900044135.1_GZPH1RResV1_genomic.fna
 sed  "s/ Fusarium graminearum/\|kraken\:taxid\|5518 Fusarium graminearum/" GCA_900044135.1_GZPH1RResV1_genomic.fna > GCA_900044135.1.fa
 
+#To confirm it worked 
+grep ">" GCA_900044135.1.fa
 #Then we can move the sequences to the correct place 
 mv GCA_900044135.1.fa $CORRECT_PLACE
 
@@ -113,8 +115,12 @@ do
 done
 ```
 
+Once the process is finished, we need to download the taxonomy file 
+```{bash, eval=F}
+kraken2-build --download-taxonomy --db custom_database/
+```
 
-Once the process is finished, we can build the database using the following code:
+Now we can build the database using the following code:
 
 ```{bash, eval=F}
 kraken2-build --build --db custom_database/ --threads 2
