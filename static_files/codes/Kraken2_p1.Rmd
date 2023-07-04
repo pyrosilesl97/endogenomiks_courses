@@ -97,7 +97,7 @@ The way we do it in the meeting using sed, first looking at the taxid in NCBI
 
 ```{bash, eval=F}
 #For GCA_900044135.1_GZPH1RResV1_genomic.fna
-sed  "s/ Fusarium graminearum/\|kraken\:taxid\|5518 Fusarium graminearum/" > GCA_900044135.1.fa
+sed  "s/ Fusarium graminearum/\|kraken\:taxid\|5518 Fusarium graminearum/" GCA_900044135.1_GZPH1RResV1_genomic.fna > GCA_900044135.1.fa
 
 #Then we can move the sequences to the correct place 
 mv GCA_900044135.1.fa $CORRECT_PLACE
