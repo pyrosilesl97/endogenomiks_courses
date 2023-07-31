@@ -1,0 +1,233 @@
+---
+title: "Metagenomic analysis using Kraken part 1"
+author: "Endogenomiks Scientific Team"
+date: "2023-07-04"
+output: html_document
+---
+
+# Processing kraken reports
+
+First, we can enter the folder containing our results, which are marked as report. We can use the code below to look at the first few lines of the report. 
+
+
+```{bash, eval=F}
+head $SAMPLE_OUT_REPORT
+```
+
+Using the same code, we can look at the first lines of the reports using the standard database.
+Can you tell the difference? 
+
+
+There are simple cases like this, where it is relatively easy by direct observation, to define which is a better approach based on the use of different databases. But sometimes this is not the case. 
+Below we will make graphical representations of the results. First we will obtain graphs to help us choose the best database (of the two we are using).
+
+## Chossing kraken database
+
+How to choose the best database? 
+To solve this question, it is very important to understand the biological context, the type of samples we have and finally the research question we are trying to answer. In general, having a larger number of taxonomic assignments is good news, but it could mean that we are collecting artifacts or technical contamination. In this case, we will not delve into how to deal with these types of challenges. But it is important to keep it in mind when choosing a database. 
+
+To visualize the results, first we need to process the text file, to erase all the spaces. 
+
+```{r, eval=FALSE, message=FALSE, warning=FALSE}
+# Read the path to the control file against the std database 
+Control_Std_db_file <- "path/to/your/control_file.txt"
+# Read the path to the control file against the custom database 
+Control_custom_db_file <- "path/to/your/custom_file.txt"
+
+
+#Load the content of the text file into an R variable
+text_content_std <- readLines(Control_Std_db_file)
+text_content_custom <- readLines(Control_custom_db_file)
+
+# Replace two spaces with nothing
+modified_content_std <- gsub("  ", "", text_content_std)
+modified_content_custom <- gsub("  ", "", text_content_custom)
+
+# Save the modified content back to the same text file
+writeLines(modified_content_std, con = Control_Std_db_file)
+writeLines(modified_content_custom, con = Control_custom_db_file)
+
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Read the path to the control file against the std database 
+Control_Std_db_file <- "/Users/pablo/Desktop/Control_report_std.txt"
+# Read the path to the control file against the custom database 
+Control_custom_db_file <- "/Users/pablo/Desktop/Control_report_custom.txt"
+
+
+#Load the content of the text file into an R variable
+text_content_std <- readLines(Control_Std_db_file)
+text_content_custom <- readLines(Control_custom_db_file)
+
+# Replace two spaces with nothing
+modified_content_std <- gsub("  ", "", text_content_std)
+modified_content_custom <- gsub("  ", "", text_content_custom)
+
+# Save the modified content back to the same text file
+writeLines(modified_content_std, con = Control_Std_db_file)
+writeLines(modified_content_custom, con = Control_custom_db_file)
+
+```
+
+
+
+Now that we have the results in a format without spaces, we can graphically represent our results using the following code. 
+
+#### For genus 
+```{r, eval=TRUE, message=FALSE, warning=FALSE}
+#Read the reports as a dataframe 
+Control_Std_db <- read.csv(Control_Std_db_file,sep = "\t", header = F)
+Control_custom_db <- read.csv(Control_custom_db_file,sep = "\t", header = F)
+
+#Filter to keep only the assignments taht represent more than 5% of the reads. 
+Control_Std_db <- Control_Std_db[Control_Std_db$V1>1,]
+Control_custom_db <- Control_custom_db[Control_custom_db$V1>1,]
+
+#Filter to keep only the genus assignments 
+Control_Std_db_genus <- Control_Std_db[Control_Std_db$V4=="G",]
+Control_custom_db_genus <- Control_custom_db[Control_custom_db$V4=="G",]
+
+#We need the ggplot library to build the plot 
+library(ggplot2)
+par(mfrows = c(2,1))
+
+ggplot(Control_Std_db_genus, aes(x=V6, y=V1,fill=V6)) + 
+  geom_bar(stat='identity', position='dodge') +
+  theme(axis.text.x = element_text(angle=90))+
+  labs(title="Metagenomic analysis using std database",
+        x ="Genus", y = "Assigned reads percentage (%)")+
+  guides(fill="none")
+
+ggplot(Control_custom_db_genus, aes(x=V6, y=V1,fill=V6)) + 
+  geom_bar(stat='identity', position='dodge') +
+  theme(axis.text.x = element_text(angle=90))+
+  labs(title="Metagenomic analysis using custom database",
+        x ="Genus", y = "Assigned reads percentage (%)")+
+  guides(fill="none")
+```
+
+### For species 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Read the reports as a dataframe 
+Control_Std_db <- read.csv(Control_Std_db_file,sep = "\t", header = F)
+Control_custom_db <- read.csv(Control_custom_db_file,sep = "\t", header = F)
+
+#Filter to keep only the assignments taht represent more than 5% of the reads. 
+Control_Std_db <- Control_Std_db[Control_Std_db$V1>1,]
+Control_custom_db <- Control_custom_db[Control_custom_db$V1>1,]
+
+#Filter to keep only the genus assignments 
+Control_Std_db_sp <- Control_Std_db[Control_Std_db$V4=="S",]
+Control_custom_db_sp <- Control_custom_db[Control_custom_db$V4=="S",]
+
+#We need the ggplot library to build the plot 
+library(ggplot2)
+par(mfrows = c(2,1))
+
+ggplot(Control_Std_db_sp, aes(x=V6, y=V1,fill=V6)) + 
+  geom_bar(stat='identity', position='dodge') +
+  theme(axis.text.x = element_text(angle=90))+
+  labs(title="Metagenomic analysis using std database",
+        x ="Genus", y = "Assigned reads percentage (%)")+
+  guides(fill="none")
+
+ggplot(Control_custom_db_sp, aes(x=V6, y=V1,fill=V6)) + 
+  geom_bar(stat='identity', position='dodge') +
+  theme(axis.text.x = element_text(angle=90))+
+  labs(title="Metagenomic analysis using custom database",
+        x ="Genus", y = "Assigned reads percentage (%)")+
+  guides(fill="none")
+```
+
+
+
+
+A good strategy is to put the numbers in percent above the bars. This can be accomplished by creating a new column using the following code, you can play with all the reports to get this representation. 
+
+
+```{r, message=FALSE, warning=FALSE}
+
+Control_custom_db_genus$label <- paste(Control_custom_db_genus$V6, Control_custom_db_genus$V1, sep = "\n")
+Control_custom_db_genus$label <- paste(Control_custom_db_genus$label,"%")
+Control_custom_db_genus$percen <- paste(Control_custom_db_genus$V1,"%")
+
+
+ggplot(Control_custom_db_genus, aes(x=V6, y=V1,fill=V6)) + 
+       geom_bar(stat='identity', position='dodge') +
+  geom_text(aes(label=percen), position=position_dodge(width=1),angle=00,vjust = 0.25)+  
+  theme(axis.text.x = element_text(angle=90))+  
+  labs(title="Metagenomic analysis using custom database",
+        x ="Genus", y = "Assigned reads percentage (%)")+
+  guides(fill="none")
+```
+
+
+
+## Comparing diferent databases
+
+Finally, we can perform the same process to compare the different biological samples we obtained. 
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Read the path to the control file against the custom database 
+Control_custom_db_file <- "/Users/pablo/Desktop/Control_report_custom.txt"
+# Read the path to the Severly ill file against the custom database 
+Severly_custom_db_file <- "/Users/pablo/Desktop/Severly_ill_report_custom.txt"
+# Read the path to the Moderely file against the custom database 
+Moderely_custom_db_file <- "/Users/pablo/Desktop/Moderely_ill_report_custom.txt"
+
+#Load the content of the text file into an R variable
+text_content_std <- readLines(Severly_custom_db_file)
+text_content_custom <- readLines(Moderely_custom_db_file)
+
+# Replace two spaces with nothing
+modified_content_std <- gsub("  ", "", text_content_std)
+modified_content_custom <- gsub("  ", "", text_content_custom)
+
+# Save the modified content back to the same text file
+writeLines(modified_content_std, con = Severly_custom_db_file)
+writeLines(modified_content_custom, con = Moderely_custom_db_file)
+
+#Read the reports as a dataframe 
+Severly_custom_db <- read.csv(Severly_custom_db_file,sep = "\t", header = F)
+Moderely_custom_db <- read.csv(Moderely_custom_db_file,sep = "\t", header = F)
+
+#Filter to keep only the assignments taht represent more than 5% of the reads. 
+Severly_custom_db <- Severly_custom_db[Severly_custom_db$V1>1,]
+Moderely_custom_db <- Moderely_custom_db[Moderely_custom_db$V1>1,]
+
+#Filter to keep only the genus assignments 
+Severly_custom_db_genus <- Severly_custom_db[Severly_custom_db$V4=="G",]
+Moderely_custom_db_genus <- Moderely_custom_db[Moderely_custom_db$V4=="G",]
+
+#We need the ggplot library to build the plot 
+library(ggplot2)
+par(mfrows = c(3,1))
+
+ggplot(Severly_custom_db_genus, aes(x=V6, y=V1,fill=V6)) + 
+  geom_bar(stat='identity', position='dodge') +
+  theme(axis.text.x = element_text(angle=90))+
+  labs(title="Metagenomic analysis using Severly ill sample",
+        x ="Genus", y = "Assigned reads percentage (%)")+
+  guides(fill="none")
+
+ggplot(Moderely_custom_db_genus, aes(x=V6, y=V1,fill=V6)) + 
+  geom_bar(stat='identity', position='dodge') +
+  theme(axis.text.x = element_text(angle=90))+
+  labs(title="Metagenomic analysis using custom Moderely ill sample",
+        x ="Genus", y = "Assigned reads percentage (%)")+
+  guides(fill="none")
+  
+ggplot(Control_custom_db_genus, aes(x=V6, y=V1,fill=V6)) + 
+  geom_bar(stat='identity', position='dodge') +
+  theme(axis.text.x = element_text(angle=90))+
+  labs(title="Metagenomic analysis using custom control sample",
+        x ="Genus", y = "Assigned reads percentage (%)")+
+  guides(fill="none")
+```
+
+
+
+
+
