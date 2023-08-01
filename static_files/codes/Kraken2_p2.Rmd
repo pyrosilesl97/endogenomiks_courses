@@ -128,7 +128,7 @@ ggplot(Control_Std_db_sp, aes(x=V6, y=V1,fill=V6)) +
   geom_bar(stat='identity', position='dodge') +
   theme(axis.text.x = element_text(angle=90))+
   labs(title="Metagenomic analysis using std database",
-        x ="Genus", y = "Assigned reads percentage (%)")+
+        x ="Species", y = "Assigned reads percentage (%)")+
   guides(fill="none")
 
 ggplot(Control_custom_db_sp, aes(x=V6, y=V1,fill=V6)) + 
