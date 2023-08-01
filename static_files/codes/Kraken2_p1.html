@@ -469,6 +469,9 @@ sequences to our custom database.</p>
 do 
   kraken2-build --add-to-library $file -db custom_database/
 done</code></pre>
+<p>To download the standard database and then add the calonectria
+sequences.</p>
+<pre class="r"><code>kraken2-build --standard --threads 2 --db custom_database/</code></pre>
 <p>Once the process is finished, we need to download the taxonomy
 file</p>
 <pre class="bash"><code>kraken2-build --download-taxonomy --db custom_database/</code></pre>

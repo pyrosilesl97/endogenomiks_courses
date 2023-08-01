@@ -115,6 +115,13 @@ do
 done
 ```
 
+To download the standard database and then add the calonectria sequences. 
+```{r, eval=FALSE}
+kraken2-build --standard --threads 2 --db custom_database/
+
+```
+
+
 Once the process is finished, we need to download the taxonomy file 
 ```{bash, eval=F}
 kraken2-build --download-taxonomy --db custom_database/
