@@ -1,5 +1,5 @@
 ---
-title: "Metagenomic analysis using Kraken part 1"
+title: "Metagenomic Analysis using Kraken part 1"
 author: "Endogenomiks Scientific Team"
 date: "2023-07-04"
 output: html_document
@@ -80,7 +80,7 @@ Now that we have the results in a format without spaces, we can graphically repr
 Control_Std_db <- read.csv(Control_Std_db_file,sep = "\t", header = F)
 Control_custom_db <- read.csv(Control_custom_db_file,sep = "\t", header = F)
 
-#Filter to keep only the assignments taht represent more than 5% of the reads. 
+#Filter to keep only the assignments taht represent more than 1% of the reads. 
 Control_Std_db <- Control_Std_db[Control_Std_db$V1>1,]
 Control_custom_db <- Control_custom_db[Control_custom_db$V1>1,]
 
@@ -90,7 +90,6 @@ Control_custom_db_genus <- Control_custom_db[Control_custom_db$V4=="G",]
 
 #We need the ggplot library to build the plot 
 library(ggplot2)
-par(mfrows = c(2,1))
 
 ggplot(Control_Std_db_genus, aes(x=V6, y=V1,fill=V6)) + 
   geom_bar(stat='identity', position='dodge') +
@@ -113,7 +112,7 @@ ggplot(Control_custom_db_genus, aes(x=V6, y=V1,fill=V6)) +
 Control_Std_db <- read.csv(Control_Std_db_file,sep = "\t", header = F)
 Control_custom_db <- read.csv(Control_custom_db_file,sep = "\t", header = F)
 
-#Filter to keep only the assignments taht represent more than 5% of the reads. 
+#Filter to keep only the assignments taht represent more than 1% of the reads. 
 Control_Std_db <- Control_Std_db[Control_Std_db$V1>1,]
 Control_custom_db <- Control_custom_db[Control_custom_db$V1>1,]
 
@@ -143,7 +142,7 @@ ggplot(Control_custom_db_sp, aes(x=V6, y=V1,fill=V6)) +
 
 
 
-A good strategy is to put the numbers in percent above the bars. This can be accomplished by creating a new column using the following code, you can play with all the reports to get this representation. 
+A good strategy is to put the numbers in per cent above the bars. This can be accomplished by creating a new column using the following code, you can play with all the reports to get this representation. 
 
 
 ```{r, message=FALSE, warning=FALSE}
@@ -164,7 +163,10 @@ ggplot(Control_custom_db_genus, aes(x=V6, y=V1,fill=V6)) +
 
 
 
-## Comparing diferent databases
+## Comparing diferent datasets
+
+**How our dataset was build?**: As a reminder, I added some info about the dataset at the bottom of this page
+
 
 Finally, we can perform the same process to compare the different biological samples we obtained. 
 
@@ -228,6 +230,9 @@ ggplot(Control_custom_db_genus, aes(x=V6, y=V1,fill=V6)) +
 ```
 
 
+### Dataset
+The sooner a disease outbreak is detected and the causative agent is identified, the faster the outbreak can be controlled by implementing testing, quarantine, and isolation. This applies to human, animal, and plant diseases. Boxwood blight is a devastating fungal plant disease of ornamentals in the Buxaceae family including boxwood (Buxus spp.), sweet box (Sarcococca spp.), and pachysandra (Pachysandra spp.). Because boxwood is one of the most popular horticultural crops in the U.S. with annual sales of $126 million, boxwood blight has caused significant economic losses and is of great concern to the landscape and nursery industry and home growers. The disease is caused by two closely related fungal species, Calonectria pseudonaviculata (Cps) and Calonectria henricotiae (Che). 
+We have three samples coming from severly ill plants, modereely ill plants and the control. 
 
 
 
